@@ -1,26 +1,6 @@
 # itchat
 
-[![Gitter][gitter-picture]][gitter] ![py27][py27] ![py35][py35] [English version][english-version]
-
-**Origin from https://github.com/littlecodersh/ItChat**
-----
-## how to generate it 
-```bash
-echo "# WechatRobot" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/bigdot123456/WechatRobot.git
-git push -u origin master
-```
-
-## 核心目标：
-
-1. 测试微信聊天机器人
-
-2. 自动登录处理微信记录
-
-## 使用介绍
+![py27][py27] ![py35][py35]
 
 itchat是一个开源的微信个人号接口，使用python调用微信从未如此简单。
 
@@ -70,8 +50,6 @@ itchat.run()
 ## 试一试
 
 这是一个基于这一项目的[开源小机器人][robot-source-code]，百闻不如一见，有兴趣可以尝试一下。
-
-由于好友数量实在增长过快，自动通过好友验证的功能演示暂时关闭。
 
 ![QRCode][robot-qr]
 
@@ -229,7 +207,7 @@ import itchat
 newInstance = itchat.new_instance()
 newInstance.auto_login(hotReload=True, statusStorageDir='newInstance.pkl')
 
-@newInstance.msg_register(itchat.content.TEXT)
+@newInstance.msg_register(TEXT)
 def reply(msg):
     return msg.text
 
@@ -261,6 +239,10 @@ itchat.logout()
 
 ## 常见问题与解答
 
+Q: 为什么中文的文件没有办法上传？
+
+A: 这是由于`requests`的编码问题导致的。若需要支持中文文件传输，将[fields.py][fields.py-2](py3版本见[这里][fields.py-3])文件放入requests包的packages/urllib3下即可
+
 Q: 如何通过这个包将自己的微信号变为控制器？
 
 A: 有两种方式：发送、接受自己UserName的消息；发送接收文件传输助手（filehelper）的消息
@@ -289,17 +271,13 @@ A: 有些账号是天生无法给自己的账号发送信息的，建议使用`f
 
 [HanSon/vbot][HanSon-vbot]: 基于PHP7的微信个人号机器人，通过实现匿名函数可以方便地实现各种自定义的功能
 
-[yaphone/itchat4j][yaphone-itchat4j]: 用Java扩展个人微信号的能力
-
-[kanjielu/jeeves][kanjielu-jeeves]: 使用springboot开发的微信机器人
-
 ## 问题和建议
 
 如果有什么问题或者建议都可以在这个[Issue][issue#1]和我讨论
 
 或者也可以在gitter上交流：[![Gitter][gitter-picture]][gitter]
 
-当然也可以加入我们新建的QQ群讨论：549762872, 205872856
+当然也可以加入我们新建的QQ群讨论：549762872
 
 [gitter-picture]: https://badges.gitter.im/littlecodersh/ItChat.svg
 [gitter]: https://gitter.im/littlecodersh/ItChat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
@@ -313,6 +291,8 @@ A: 有些账号是天生无法给自己的账号发送信息的，建议使用`f
 [robot-qr]: http://7xrip4.com1.z0.glb.clouddn.com/ItChat%2FQRCode2.jpg?imageView/2/w/400/
 [robot-demo-file]: http://7xrip4.com1.z0.glb.clouddn.com/ItChat%2FScreenshots%2F%E5%BE%AE%E4%BF%A1%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%9B%BE%E7%89%87.png?imageView/2/w/300/
 [robot-demo-login]: http://7xrip4.com1.z0.glb.clouddn.com/ItChat%2FScreenshots%2F%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E6%88%AA%E5%9B%BE.jpg?imageView/2/w/450/
+[fields.py-2]: https://gist.github.com/littlecodersh/9a0c5466f442d67d910f877744011705
+[fields.py-3]: https://gist.github.com/littlecodersh/e93532d5e7ddf0ec56c336499165c4dc
 [littlecodersh]: https://github.com/littlecodersh
 [tempdban]: https://github.com/tempdban
 [Chyroc]: https://github.com/Chyroc
@@ -321,7 +301,4 @@ A: 有些账号是天生无法给自己的账号发送信息的，建议使用`f
 [zixia-wechaty]: https://github.com/zixia/wechaty
 [Mojo-Weixin]: https://github.com/sjdy521/Mojo-Weixin
 [HanSon-vbot]: https://github.com/hanson/vbot
-[yaphone-itchat4j]: https://github.com/yaphone/itchat4j
-[kanjielu-jeeves]: https://github.com/kanjielu/jeeves
 [issue#1]: https://github.com/littlecodersh/ItChat/issues/1
-# WechatRobot
